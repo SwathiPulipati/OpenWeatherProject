@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blue_300"
+        android:padding="15dp"
+        tools:context="com.example.operweatherproject.MainActivity">
+
+        <EditText
+            android:id="@+id/zipcodeInsert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:cursorVisible="true"
+            android:ems="10"
+            android:hint="Enter Zip Code"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textColor="#FFFFFF"
+            android:textCursorDrawable="@null"
+            app:backgroundTint="@color/blue_700"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/runButton"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/runButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/blue_500"
+            android:text="SEARCH"
+            app:layout_constraintBottom_toBottomOf="@+id/zipcodeInsert"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/zipcodeInsert" />
+
+        <TextView
+            android:id="@+id/lat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="@+id/zipcodeInsert"
+            app:layout_constraintTop_toBottomOf="@+id/zipcodeInsert" />
+
+        <TextView
+            android:id="@+id/lon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/lat"
+            app:layout_constraintStart_toEndOf="@+id/lat"
+            app:layout_constraintTop_toTopOf="@+id/lat" />
+
+        <TextView
+            android:id="@+id/city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="@+id/zipcodeInsert"
+            app:layout_constraintTop_toBottomOf="@+id/lat" />
+
+        <TextView
+            android:id="@+id/dateTimeDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="@+id/zipcodeInsert"
+            app:layout_constraintTop_toBottomOf="@+id/city" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/currentCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/blue_300"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.72">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:id="@+id/currentLayout"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/currentImage"
+                    app:layout_constraintHorizontal_bias="0.14"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/dayHighLow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/currentTemp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight=".7"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="1sp"
+                        android:autoSizeTextType="uniform"
+                        android:autoText="false"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="50sp" />
+
+                    <TextView
+                        android:id="@+id/currentFeelsLike"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/currentImage"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/currentLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/currentLayout"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/currentDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    app:layout_constraintEnd_toEndOf="@+id/currentImage"
+                    app:layout_constraintStart_toStartOf="@+id/currentImage"
+                    app:layout_constraintTop_toBottomOf="@id/currentImage" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.542"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.915" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
