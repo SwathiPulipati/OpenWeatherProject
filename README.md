@@ -1,2 +1,2 @@
 # OpenWeatherProject
-Hello! This is my Open Weather Project.
+This is my open weather project, showcasing my first use of RESTful APIs and UI/UX design.
